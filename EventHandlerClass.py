@@ -11,7 +11,10 @@ class EventHandler(object):
     
     def callEvent(self, eventName, *args):
         #call event
-        return self.hookedEvents[eventName](args)
+        try:
+            return self.hookedEvents[eventName](args)
+        except Exception:
+            return None
 
 class EventObject(object):
     """
