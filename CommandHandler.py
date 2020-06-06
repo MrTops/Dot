@@ -9,14 +9,14 @@ class CommandHandler(object):
         #init method
         self.hookedCommands = {}
 
-    def hookCommands(commandList):
+    def hookCommands(self, commandList):
         #hook commands
         for command in commandList:
             self.hookedCommands[command.callSign] = command
 
-    def postCommand(INPUT):
+    def postCommand(self, INPUT):
         parsed_INPUT = INPUT.split(' ')
         try:
             return self.hookedCommands[parsed_INPUT[0]].fire(parsed_INPUT)
-        else Exception:
+        except Exception:
             return None

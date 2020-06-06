@@ -4,7 +4,17 @@ This File contains the list of Commands, please look at the example commands or 
 
 """
 
-import CommandClass as *
-import EventHandlerClass as *
+import CommandClass
+import EventHandlerClass
 
-Commands = []
+
+def pingFiredEventFunction(*args):
+    print("  pong")
+
+pingFiredEvent = EventHandlerClass.EventObject('fired', pingFiredEventFunction)
+pingEventHandler = EventHandlerClass.EventHandler(pingFiredEvent)
+pingCommand = CommandClass.Command("/ping", pingEventHandler)
+
+Commands = [
+    pingCommand
+]
