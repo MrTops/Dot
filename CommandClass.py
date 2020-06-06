@@ -5,3 +5,6 @@ class Command(object):
     def __init__(self, callSign, eventHandler):
         self.callSign = callSign
         self.eventHandler = eventHandler
+
+    def fire(self, *args):
+        return self.eventHandler.callEvent("fired")
