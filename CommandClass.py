@@ -6,5 +6,5 @@ class Command(object):
         self.callSign = callSign
         self.eventHandler = eventHandler
 
-    def fire(self, *args):
-        return self.eventHandler.callEvent("fired")
+    def fire(self, args):
+        return self.eventHandler.callEvent("fired", args)

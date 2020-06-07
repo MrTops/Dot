@@ -7,14 +7,22 @@ This File contains the list of Commands, please look at the example commands or 
 import CommandClass
 import EventHandlerClass
 
+# make a function
+def pingCommandFiredFunction(args):
+    print("pong ;)")
+    for thing in args:
+        print(thing,end='')
+    print()
+    return
 
-def pingFiredEventFunction(*args):
-    print("  pong")
+# make a event, name must be 'fired'
+pingCommandFiredEvent = EventHandlerClass.EventObject('fired', pingCommandFiredFunction)
 
-pingFiredEvent = EventHandlerClass.EventObject('fired', pingFiredEventFunction)
-pingEventHandler = EventHandlerClass.EventHandler(pingFiredEvent)
-pingCommand = CommandClass.Command("/ping", pingEventHandler)
+# make a event handler
+pingCommandEventHandler = EventHandlerClass.EventHandler(pingCommandFiredEvent)
 
-Commands = [
-    pingCommand
-]
+# make a command
+pingCommand = CommandClass.Command('/ping', pingCommandEventHandler)
+
+# attach command
+Commands = [pingCommand]

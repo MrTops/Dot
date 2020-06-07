@@ -9,7 +9,7 @@ class EventHandler(object):
         for event in events:
             self.hookedEvents[event.getName()] = event.getFunction()
     
-    def callEvent(self, eventName, *args):
+    def callEvent(self, eventName, args):
         #call event
         try:
             return self.hookedEvents[eventName](args)
