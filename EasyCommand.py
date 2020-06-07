@@ -13,7 +13,7 @@ function -> commandObject
 import CommandClass
 import EventHandlerClass
 
-def createCommand(name, function):
+def createCommand(name, function, useStrict=True, *alias):
     eventObject = EventHandlerClass.EventObject('fired', function)
     eventHandlerObject = EventHandlerClass.EventHandler(eventObject)
-    return CommandClass.Command(name, eventHandlerObject)
+    return CommandClass.Command(name, eventHandlerObject, useStrict, alias)

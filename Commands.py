@@ -9,37 +9,12 @@ import EventHandlerClass
 #or use EasyCommand
 import EasyCommand
 
-## Easy Command
-# make a function
-def oofCommandFiredFunction(args):
+def testCommandFunction(args):
     args.pop(0)
-    print("oof")
+    print('test complete')
     return
 
-# make a command
-oofCommand = EasyCommand.createCommand('/oof', oofCommandFiredFunction)
-
-# (below) attach command to list
-
-## Long Way
-# make a function
-def pingCommandFiredFunction(args):
-    print("pong ;)")
-    # pop first
-    args.pop(0)
-    for thing in args:
-        print(thing,end=' ')
-    print()
-    return
-
-# make a event, name must be 'fired'
-pingCommandFiredEvent = EventHandlerClass.EventObject('fired', pingCommandFiredFunction)
-
-# make a event handler
-pingCommandEventHandler = EventHandlerClass.EventHandler(pingCommandFiredEvent)
-
-# make a command
-pingCommand = CommandClass.Command('/ping', pingCommandEventHandler)
+testCommand = EasyCommand.createCommand('/test', testCommandFunction, False, '-test', '-t', '/t')
 
 # attach command
-Commands = [pingCommand, oofCommand]
+Commands = [testCommand]

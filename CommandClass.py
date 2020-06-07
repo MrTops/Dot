@@ -7,7 +7,6 @@ class Command(object):
         self.eventHandler = eventHandler
         self.alias = alias
         self.useStrict = useStrict
-        
 
     def fire(self, args):
         return self.eventHandler.callEvent("fired", args)
