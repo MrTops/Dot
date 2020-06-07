@@ -6,12 +6,29 @@ This File contains the list of Commands, please look at the example commands or 
 
 import CommandClass
 import EventHandlerClass
+#or use EasyCommand
+import EasyCommand
 
+## Easy Command
+# make a function
+def oofCommandFiredFunction(args):
+    args.pop(0)
+    print("oof")
+    return
+
+# make a command
+oofCommand = EasyCommand.createCommand('/oof', oofCommandFiredFunction)
+
+# (below) attach command to list
+
+## Long Way
 # make a function
 def pingCommandFiredFunction(args):
     print("pong ;)")
+    # pop first
+    args.pop(0)
     for thing in args:
-        print(thing,end='')
+        print(thing,end=' ')
     print()
     return
 
@@ -25,4 +42,4 @@ pingCommandEventHandler = EventHandlerClass.EventHandler(pingCommandFiredEvent)
 pingCommand = CommandClass.Command('/ping', pingCommandEventHandler)
 
 # attach command
-Commands = [pingCommand]
+Commands = [pingCommand, oofCommand]
